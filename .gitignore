@@ -7,3 +7,4 @@ dataset
 *.svg
 .DS_Store
 *.c
+*.zip
