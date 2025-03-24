@@ -8,3 +8,4 @@ dataset
 .DS_Store
 *.c
 *.zip
+*.tar*
