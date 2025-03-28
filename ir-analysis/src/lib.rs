@@ -78,9 +78,7 @@ struct IRAnalysis {
 impl IRAnalysis {
     pub fn new(vuln: &str, patch: &str, diff_path: &str) -> Self {
         let patch = KModule::from_bc_path(patch).expect("failed to load patch bitcode");
-        println!("patch: {:?}", patch);
         let vuln = KModule::from_bc_path(vuln).expect("failed to load vuln bitcode");
-        println!("vuln: {:?}", vuln);
         let source_diff = SourceDiff::from_path(diff_path).expect("failed to load source diff");
         Self {
             vuln,
@@ -450,6 +448,7 @@ impl IRAnalysis {
         target: &str,
         ctx: &mut Smt,
     ) -> Result<IRState, HashMap<String, Vec<Effect>>> {
+        println!("testing {} ...", target);
         let target_mod = KModule::from_bc_path(target).expect("failed to load target bitcode");
         let functions = self
             .effects
