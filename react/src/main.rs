@@ -83,6 +83,8 @@ fn test_each_cve(
     );
     let prefix = format!("{}/{}/{}", BITCODE_DIR.as_str(), cve.project, cve.id);
     let (bitcode_path1, bitcode_path2) = (prefix.clone() + "_vuln.bc", prefix + "_patch.bc");
+    println!("bitcode path: {} {}", bitcode_path1, bitcode_path2);
+    return ;
     let mut ir_analysis = IRAnalysis2::new(&bitcode_path1, &bitcode_path2, source_diff_path);
     tests
         .iter()
