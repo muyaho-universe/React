@@ -83,9 +83,11 @@ fn test_each_cve(
     );
     let prefix = format!("{}/{}/{}", BITCODE_DIR.as_str(), cve.project, cve.id);
     let (bitcode_path1, bitcode_path2) = (prefix.clone() + "_vuln.bc", prefix + "_patch.bc");
-    println!("bitcode path: {} {}", bitcode_path1, bitcode_path2);
-    return vec![] ;
+    // println!("bitcode path: {} {}", bitcode_path1, bitcode_path2);
+    // bitcode path: /home/dale/React/dataset/bitcodes/tcpdump/CVE-2018-14463_vuln.bc /home/dale/React/dataset/bitcodes/tcpdump/CVE-2018-14463_patch.bc
     let mut ir_analysis = IRAnalysis2::new(&bitcode_path1, &bitcode_path2, source_diff_path);
+    println!("ir_analysis is {:?}", ir_analysis);
+    return vec![];
     tests
         .iter()
         .filter(|test| case.is_none() || test.file.contains(case.as_ref().unwrap()))
