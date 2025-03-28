@@ -86,8 +86,7 @@ fn test_each_cve(
     // println!("bitcode path: {} {}", bitcode_path1, bitcode_path2);
     // bitcode path: /home/dale/React/dataset/bitcodes/tcpdump/CVE-2018-14463_vuln.bc /home/dale/React/dataset/bitcodes/tcpdump/CVE-2018-14463_patch.bc
     let mut ir_analysis = IRAnalysis2::new(&bitcode_path1, &bitcode_path2, source_diff_path);
-    println!("ir_analysis is {:?}", ir_analysis);
-    return vec![];
+    // println!("ir_analysis is {:?}", ir_analysis); // `IRAnalysis2` cannot be formatted using `{:?}` because it doesn't implement `Debug`
     tests
         .iter()
         .filter(|test| case.is_none() || test.file.contains(case.as_ref().unwrap()))

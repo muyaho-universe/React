@@ -43,6 +43,7 @@ impl IRAnalysis2 {
 
     pub fn test(&mut self, target: &str, ctx: &mut Smt) -> IRState {
         let result = self.standard.test(target, ctx);
+        println!("self.opt: {:?}", self.opt);
         match result {
             Ok(result) => result,
             Err(functions_effects) => {
