@@ -448,7 +448,8 @@ impl IRAnalysis {
         target: &str,
         ctx: &mut Smt,
     ) -> Result<IRState, HashMap<String, Vec<Effect>>> {
-        println!("testing {} ...", target);
+        // println!("testing {} ...", target);
+        // testing /home/dale/React/dataset/bitcodes/tcpdump/tcpdump_tcpdump-4.9.3_O3_x86_clang.bc ...
         let target_mod = KModule::from_bc_path(target).expect("failed to load target bitcode");
         let functions = self
             .effects
@@ -476,6 +477,20 @@ impl IRAnalysis {
                     functions_strings.insert(name.clone(), strings);
                 }
                 let (vuln_strings, patch_strings) = &self.strings[name];
+                // print vuln and patch strings
+                if cfg!(debug_assertions) {
+                    println!("{}: ", name);
+                    println!("vuln: ");
+                    for effect in vuln_strings {
+                        print!("{}, ", effect);
+                    }
+                    println!();
+                    println!("patch: ");
+                    for effect in patch_strings {
+                        print!("{}, ", effect);
+                    }
+                    println!();
+                }
                 let function_string = &functions_strings[name];
                 if !strings_tested.contains(name) {
                     if let Some(result) =
