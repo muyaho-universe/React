@@ -133,7 +133,7 @@ impl IRAnalysis {
                 }
             }
         }
-        print("effects: ");
+        println!("effects: ");
         for (name, (vuln, patch, _, _)) in &effects {
             println!("{}: ", name);
             println!("vuln: ");
