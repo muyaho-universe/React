@@ -133,6 +133,7 @@ impl IRAnalysis {
                 }
             }
         }
+        println!("====================================");
         println!("effects: ");
         for (name, (vuln, patch, _, _)) in &effects {
             println!("{}: ", name);
@@ -140,12 +141,13 @@ impl IRAnalysis {
             for effect in vuln {
                 println!("{}, ", effect);
             }
-            println!("====================================");
+            println!("--------------------------");
             println!("patch: ");
             for effect in patch {
                 println!("{}, ", effect);
             }
         }
+        println!("====================================");
         let effects = self.refine(effects);
         // if cfg!(debug_assertions) {
         println!("Refined effects: ");
@@ -155,12 +157,13 @@ impl IRAnalysis {
             for effect in vuln {
                 println!("{}, ", effect);
             }
-            println!("====================================");
+            println!("--------------------------");
             println!("patch: ");
             for effect in patch {
                 println!("{}, ", effect);
             }
         }
+        println!("====================================");
         // }
         let effects = self.rank(effects);
         if cfg!(debug_assertions) {
