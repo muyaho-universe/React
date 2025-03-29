@@ -478,6 +478,7 @@ impl IRAnalysis {
                 }
                 let (vuln_strings, patch_strings) = &self.strings[name];
                 // print vuln and patch strings
+                println!("MUYAHO");
                 if cfg!(debug_assertions) {
                     println!("{}: ", name);
                     println!("vuln: ");
