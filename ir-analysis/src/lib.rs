@@ -134,20 +134,20 @@ impl IRAnalysis {
             }
         }
         let effects = self.refine(effects);
-        if cfg!(debug_assertions) {
-            println!("Refined effects: ");
-            for (name, (vuln, patch)) in &effects {
-                println!("{}: ", name);
-                println!("vuln: ");
-                for effect in vuln {
-                    println!("{}, ", effect);
-                }
-                println!("patch: ");
-                for effect in patch {
-                    println!("{}, ", effect);
-                }
+        // if cfg!(debug_assertions) {
+        println!("Refined effects: ");
+        for (name, (vuln, patch)) in &effects {
+            println!("{}: ", name);
+            println!("vuln: ");
+            for effect in vuln {
+                println!("{}, ", effect);
+            }
+            println!("patch: ");
+            for effect in patch {
+                println!("{}, ", effect);
             }
         }
+        // }
         let effects = self.rank(effects);
         if cfg!(debug_assertions) {
             println!("Ranked effects: ");
@@ -477,21 +477,6 @@ impl IRAnalysis {
                     functions_strings.insert(name.clone(), strings);
                 }
                 let (vuln_strings, patch_strings) = &self.strings[name];
-                // print vuln and patch strings
-                println!("MUYAHO");
-                if cfg!(debug_assertions) {
-                    println!("{}: ", name);
-                    println!("vuln: ");
-                    for effect in vuln_strings {
-                        print!("{}, ", effect);
-                    }
-                    println!();
-                    println!("patch: ");
-                    for effect in patch_strings {
-                        print!("{}, ", effect);
-                    }
-                    println!();
-                }
                 let function_string = &functions_strings[name];
                 if !strings_tested.contains(name) {
                     if let Some(result) =
