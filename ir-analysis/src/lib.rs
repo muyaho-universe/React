@@ -134,6 +134,24 @@ impl IRAnalysis {
             }
         }
         println!("====================================");
+        println!("vuln_all: ");
+        for (name, (_, _, vuln_all, _)) in &effects {
+            println!("{}: ", name);
+            for effect in vuln_all {
+                println!("{}, ", effect);
+            }
+        }
+        println!("--------------------------");
+        println!("patch_all: ");
+        for (name, (_, _, _, patch_all)) in &effects {
+            println!("{}: ", name);
+            for effect in patch_all {
+                println!("{}, ", effect);
+            }
+        }
+        println!("====================================");
+
+        println!("====================================");
         println!("effects: ");
         for (name, (vuln, patch, _, _)) in &effects {
             println!("{}: ", name);
